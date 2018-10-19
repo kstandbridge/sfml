@@ -1,16 +1,41 @@
 #include "Snake.h"
 
 
-Snake::Snake(int blockSize)
+Snake::Snake(int blockSize, Textbox* log)
+	: m_size(blockSize), m_log(log)
 {
-	m_size = blockSize;
 	m_bodyRect.setSize(sf::Vector2f(m_size - 1, m_size - 1));
 	Reset();
+}
+
+Direction Snake::GetPhysicalDirection()
+{
+	if(m_snakeBody.size() <= 1) return Direction::None;
+
+	SnakeSegment& head = m_snakeBody[0];
+	SnakeSegment& neck = m_snakeBody[1];
+
+	if(head.position.x == neck.position.x)
+	{
+		return head.position.y > neck.position.y ? Direction::Down : Direction::Up;
+	}
+	else if(head.position.y == neck.position.y)
+	{
+		return head.position.x > neck.position.x ? Direction::Right : Direction::Left;
+	}
+
+	return Direction::None;
 }
 
 sf::Vector2i Snake::GetPosition()
 {
 	return !m_snakeBody.empty() ? m_snakeBody.front().position : sf::Vector2i(1, 1);
+}
+
+void Snake::IncreaseScore()
+{
+	m_score += 10;
+	m_log->Add("You ate an apple. Score: " + std::to_string(m_score));
 }
 
 void Snake::Extend()
@@ -127,6 +152,8 @@ void Snake::Cut(int segments)
 	{
 		Lose();
 	}
+
+	m_log->Add("You have lost a life! Lives left: " + std::to_string(m_lives));
 }
 
 void Snake::Render(sf::RenderWindow& window)

@@ -1,5 +1,7 @@
 #pragma once
 #include "Common/Window.h"
+#include "Common/Textbox.h"
+
 #include "World.h"
 
 class Game
@@ -25,5 +27,7 @@ private:
 
 	World m_world;
 	Snake m_snake;
+
+	Textbox m_textbox;
 };
 

@@ -2,6 +2,7 @@
 #include <vector>
 
 #include <SFML/Graphics.hpp>
+#include "Common/Textbox.h"
 
 struct SnakeSegment
 {
@@ -20,12 +21,13 @@ enum class Direction { None, Up, Down, Left, Right };
 class Snake
 {
 public:
-	Snake(int blockSize);
+	Snake(int blockSize, Textbox* log);
 	~Snake() {};
 
 	// Helper methods
 	void SetDirection(Direction direction) { m_direction = direction; }
 	Direction GetDirection() { return m_direction; }
+	Direction GetPhysicalDirection();
 	int GetSpeed() { return m_speed; }
 	
 	sf::Vector2i GetPosition();
@@ -33,7 +35,7 @@ public:
 	int GetLives() { return m_lives; }
 	int GetScore() { return m_score; }
 
-	void IncreaseScore() { m_score += 10; }
+	void IncreaseScore();
 	bool HasLost() { return  m_lost; }
 	void Lose() { m_lost = true; }
 	void ToggleLost() { m_lost = !m_lost; }
@@ -57,6 +59,7 @@ private:
 	int m_score;	// Score
 	bool m_lost;	// Losing state
 	sf::RectangleShape m_bodyRect;	// Shape used in rendering
+	Textbox* m_log;
 
 };
 

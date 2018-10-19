@@ -49,6 +49,7 @@ void World::Update(Snake& player)
 {
 	if(player.GetPosition() == m_item)
 	{
+		
 		player.Extend();
 		player.IncreaseScore();
 		RespawnApple();
