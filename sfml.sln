@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "by_example", "by_example", "{82516264-0FC7-48BF-8CC0-5671113F2E01}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_its_alive", "src\by_example\01_its_alive\01_its_alive.vcxproj", "{2CEE92EE-20E3-4511-A33D-B2CF11863FA9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94D18305-91B2-42A1-A4E2-268AE7A8AF76} = {94D18305-91B2-42A1-A4E2-268AE7A8AF76}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_structure", "src\by_example\02_structure\02_structure.vcxproj", "{ABEBD840-6A02-4751-A347-6B2F1C52A777}"
 	ProjectSection(ProjectDependencies) = postProject
