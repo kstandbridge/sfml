@@ -18,7 +18,7 @@ public:
 
 	bool IsFullscreen() { return m_isFullscreen; }
 
-	sf::Vector2u GetWindowSize() { return m_windowSize; }
+	sf::Vector2u GetWindowSize() { return m_window.getSize(); }
 
 	void ToggleFullscreen();
 

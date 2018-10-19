@@ -7,7 +7,7 @@ Game::Game()
 {
 	m_mushroomTexture.loadFromFile("Mushroom.png");
 	m_mushroom.setTexture(m_mushroomTexture);
-	m_direction = sf::Vector2f(0.4f, 0.4f);
+	m_direction = sf::Vector2i(400, 400);
 
 	auto spriteSize = m_mushroomTexture.getSize();
 	m_mushroom.setOrigin(spriteSize.x / 2.0f, spriteSize.y / 2.0f);
@@ -48,5 +48,9 @@ void Game::MoveMushroom()
 		m_direction.y = -m_direction.y;
 	}
 
-	m_mushroom.setPosition(spritePos + m_direction);
+	float fElapsed = m_elapsed.asSeconds();
+
+	m_mushroom.setPosition(
+		spritePos.x + (m_direction.x * fElapsed),
+		spritePos.y + (m_direction.y * fElapsed));
 }
