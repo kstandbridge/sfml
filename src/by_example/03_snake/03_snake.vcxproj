@@ -141,6 +141,9 @@
     <ClInclude Include="Snake.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="keys.cfg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
