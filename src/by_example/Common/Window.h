@@ -25,7 +25,7 @@ public:
 	void Draw(sf::Drawable& drawable);
 
 	bool IsFocused();
-	EventManager* GetEventManager();
+	EventManager* GetEventManager() { return &m_eventManager; }
 	void ToggleFullscreen(EventDetails* details);
 	void Close(EventDetails* details = nullptr) { m_isDone = true; }
 

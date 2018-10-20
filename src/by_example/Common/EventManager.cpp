@@ -124,18 +124,18 @@ void EventManager::Update()
 				// Up for expansion.
 				break;
 			}
-
-			if(binding->m_events.size() == binding->c)
-			{
-				auto callback_itr = m_callbacks.find(binding->m_name);
-				if(callback_itr != m_callbacks.end())
-				{
-					callback_itr->second(&binding->m_details);
-				}
-			}
-			binding->c = 0;
-			binding->m_details.Clear();
 		}
+
+		if(binding->m_events.size() == binding->c)
+		{
+			auto callback_itr = m_callbacks.find(binding->m_name);
+			if(callback_itr != m_callbacks.end())
+			{
+				callback_itr->second(&binding->m_details);
+			}
+		}
+		binding->c = 0;
+		binding->m_details.Clear();
 	}
 }
 
