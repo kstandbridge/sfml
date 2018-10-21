@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <iostream>
+#include "Common/StateManager.h"
 
 
 Game::Game()
@@ -13,7 +14,7 @@ Game::Game()
 	m_sprite.setOrigin(float(size.x) / 2.0f, float(size.y) / 2);
 	m_sprite.setPosition(float(windowSize.x) / 2, float(windowSize.y) / 2);
 
-	m_window.GetEventManager()->AddCallback("Move", &Game::MoveSprite, this);
+	m_window.GetEventManager()->AddCallback(StateType(0), "Move", &Game::MoveSprite, this);
 
 	m_textBox.Setup(5, 14, 350, sf::Vector2f(255, 0));
 
