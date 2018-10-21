@@ -29,6 +29,16 @@ bool EventManager::RemoveBinding(std::string name)
 	return true;
 }
 
+bool EventManager::RemoveCallback(StateType state, const std::string& name)
+{
+	auto statePair = m_callbacks.find(state);
+	if(statePair == m_callbacks.end()) return false;
+	auto callbackPair = statePair->second.find(name);
+	if(callbackPair == statePair->second.end()) return false;
+	statePair->second.erase(name);
+	return true;
+}
+
 void EventManager::HandleEvent(sf::Event& event)
 {
 	for (auto& binding_itr : m_bindings)
@@ -128,10 +138,25 @@ void EventManager::Update()
 
 		if(binding->m_events.size() == binding->c)
 		{
-			auto callback_itr = m_callbacks.find(binding->m_name);
-			if(callback_itr != m_callbacks.end())
+			auto stateCallBacks = m_callbacks.find(m_currentState);
+			auto otherCallbacks = m_callbacks.find(StateType(0));
+
+			if(stateCallBacks != m_callbacks.end())
 			{
-				callback_itr->second(&binding->m_details);
+				auto callback_itr = stateCallBacks->second.find(binding->m_name);
+				if(callback_itr != stateCallBacks->second.end())
+				{
+					callback_itr->second(&binding->m_details);
+				}
+			}
+
+			if(otherCallbacks != m_callbacks.end())
+			{
+				auto callback_itr = otherCallbacks->second.find(binding->m_name);
+				if(callback_itr != otherCallbacks->second.end())
+				{
+					callback_itr->second(&binding->m_details);
+				}
 			}
 		}
 		binding->c = 0;

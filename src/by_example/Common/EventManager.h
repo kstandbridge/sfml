@@ -84,8 +84,10 @@ struct Binding
 
 using Bindings = std::unordered_map<std::string, Binding*>;
 
-// Standard function wrapper
-using Callbacks = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
+using CallbackContainer = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
+enum class StateType;
+using Callbacks = std::unordered_map<StateType, CallbackContainer>;
+
 
 class EventManager
 {
@@ -96,19 +98,18 @@ public:
 	bool AddBinding(Binding* binding);
 	bool RemoveBinding(std::string name);
 
+	void SetCurrentState(StateType state) { m_currentState = state; }
 	void SetFocus(bool hasFocus) { m_hasFocus = hasFocus; }
 
 	template<class T>
-	bool AddCallback(const std::string& name, void(T::*func)(EventDetails*), T* instance)
+	bool AddCallback(StateType state, std::string name, void(T::*func)(EventDetails*), T* instance)
 	{
+		auto it = m_callbacks.emplace(state, CallbackContainer()).first;
 		auto temp = std::bind(func, instance, std::placeholders::_1);
-		return m_callbacks.emplace(name, temp).second;
+		return it->second.emplace(name, temp).second;
 	}
 
-	void RemoveCallback(const std::string& name)
-	{
-		m_callbacks.erase(name);
-	}
+	bool RemoveCallback(StateType state, const std::string& name);
 
 	void HandleEvent(sf::Event& event);
 	void Update();
@@ -121,6 +122,7 @@ public:
 private:
 	void LoadBindings();
 
+	StateType m_currentState;
 	Bindings m_bindings;
 	Callbacks m_callbacks;
 	bool m_hasFocus;
