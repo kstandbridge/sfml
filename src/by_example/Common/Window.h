@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include "EventManager.h"
 
@@ -21,6 +23,7 @@ public:
 
 	sf::RenderWindow* GetRenderWindow() { return &m_window; }
 	sf::Vector2u GetWindowSize() { return m_window.getSize(); }
+	sf::FloatRect GetViewSpace();
 
 	void Draw(sf::Drawable& drawable);
 

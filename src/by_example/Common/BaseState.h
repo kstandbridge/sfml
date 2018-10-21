@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/System/Time.hpp>
+#include <SFML/Graphics.hpp>
 
 class StateManager;
 
@@ -29,8 +29,12 @@ public:
 
 	StateManager* GetStateManager() { return  m_stateManager; }
 
+	sf::View& GetView() { return m_view; }
+
 protected:
 	StateManager* m_stateManager;
 	bool m_transparent;
 	bool m_transcendent;
+
+	sf::View m_view;
 };

@@ -53,6 +53,16 @@ void Window::ToggleFullscreen(EventDetails* details)
 	Create();
 }
 
+sf::FloatRect Window::GetViewSpace()
+{
+	// Gets the top left corner of the view.
+	sf::Vector2f viewCenter = m_window.getView().getCenter();
+	sf::Vector2f viewSize = m_window.getView().getSize();
+	sf::Vector2f viewSizeHalf(viewSize.x / 2, viewSize.y / 2);
+	sf::FloatRect viewSpace(viewCenter - viewSizeHalf, viewSize);
+	return viewSpace;
+}
+
 void Window::Draw(sf::Drawable& drawable)
 {
 	m_window.draw(drawable);
