@@ -12,7 +12,7 @@ void Anim_Directional::FrameStep()
 	if((m_frameStart < m_frameEnd && m_frameCurrent > m_frameEnd) ||
 		(m_frameStart > m_frameEnd && m_frameCurrent < m_frameEnd))
 	{
-		if(m_loop)
+ 		if(m_loop)
 		{
 			m_frameCurrent = m_frameStart;
 			return;

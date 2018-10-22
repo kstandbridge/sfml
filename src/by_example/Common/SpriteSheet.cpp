@@ -49,7 +49,8 @@ Direction SpriteSheet::GetDirection() const
 bool SpriteSheet::LoadSheet(const std::string& file)
 {
 	std::ifstream sheet;
-	sheet.open(Utils::GetWorkingDirectory() + file);
+	// sheet.open(Utils::GetWorkingDirectory() + file);
+	sheet.open(file);
 	if(sheet.is_open())
 	{
 		ReleaseSheet(); // Release current sheet resources
