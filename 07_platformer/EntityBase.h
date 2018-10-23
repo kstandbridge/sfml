@@ -40,6 +40,7 @@ public:
 	EntityState GetState() const;
 	std::string GetName() const;
 	unsigned int GetId() const;
+	EntityType GetType() const;
 
 	void SetPosition(float x, float y);
 	void SetPosition(const sf::Vector2f& pos);

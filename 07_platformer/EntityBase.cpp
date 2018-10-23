@@ -17,6 +17,11 @@ EntityBase::EntityBase(EntityManager* entityManager)
 {
 }
 
+EntityType EntityBase::GetType() const
+{
+	return m_type;
+}
+
 void EntityBase::SetPosition(float x, float y)
 {
 	m_position = sf::Vector2f(x, y);
