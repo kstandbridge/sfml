@@ -1,7 +1,6 @@
 #include "State_Game.h"
 #include "Common/StateManager.h"
-
-
+#include "Common/Window.h"
 
 State_Game::State_Game(StateManager* stateManager)
 	: BaseState(stateManager), 

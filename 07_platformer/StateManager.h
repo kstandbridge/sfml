@@ -1,15 +1,15 @@
 #pragma once
 #include <vector>
 #include <unordered_map>
-
-class BaseState;
-
+#include "State_Intro.h"
+#include "State_MainMenu.h"
+#include "State_Game.h"
+#include "State_Paused.h"
+#include "State_GameOver.h"
 #include "SharedContext.h"
 
-enum class StateType
-{
-	Intro = 1, MainMenu, Game, Paused, GameOver, Credits
-};
+
+enum class StateType{ Intro = 1, MainMenu, Game, Paused, GameOver, Credits };
 
 using StateContainer = std::vector<std::pair<StateType, BaseState*>>;
 using TypeContainer = std::vector<StateType>;
@@ -33,9 +33,8 @@ public:
 	void Remove(const StateType& type) { m_toRemove.push_back(type); }
 
 	template<class T>
-	void RegisterState(const StateType& type)
-	{
-		m_stateFactory[type] = [this]() -> BaseState*
+	void RegisterState(const StateType& l_type){
+		m_stateFactory[l_type] = [this]() -> BaseState*
 		{
 			return new T(this);
 		};

@@ -1,5 +1,5 @@
 #include "EntityManager.h"
-#include "Common/Window.h"
+#include "SharedContext.h"
 
 class Player;
 class Enemy;
@@ -95,6 +95,11 @@ void EntityManager::Purge()
 	m_idCounter = 0;
 }
 
+SharedContext* EntityManager::GetContext()
+{
+	return m_context;
+}
+
 void EntityManager::ProcessRemovals()
 {
 	while(m_entitiesToRemove.begin() != m_entitiesToRemove.end())
@@ -114,8 +119,7 @@ void EntityManager::ProcessRemovals()
 void EntityManager::LoadEnemyTypes(const std::string& name)
 {
 	std::ifstream file;
-	// file.open(Utils::GetWorkingDirectory() + std::string("media/Characters/") + name);
-	file.open(std::string("media/Characters/") + name);
+	file.open(Utils::GetWorkingDirectory() + std::string("media/Characters/") + name);
 	if(!file.is_open())
 	{
 		std::cout << "! Failed loading file: " << name << std::endl;
@@ -158,7 +162,7 @@ void EntityManager::EntityCollisionCheck()
 				Character* c1 = (Character*)entity1->second;
 				if(c1->m_attackAABB.intersects(entity2->second->m_AABB))
 				{
-					c1.OnEntityCollision(entity2->second, true);
+					c1->OnEntityCollision(entity2->second, true);
 				}
 			}
 
@@ -167,7 +171,7 @@ void EntityManager::EntityCollisionCheck()
 				Character* c2 = (Character*)entity2->second;
 				if(c2->m_attackAABB.intersects(entity1->second->m_AABB))
 				{
-					c2.OnEntityCollision(entity1->second, true);
+					c2->OnEntityCollision(entity1->second, true);
 				}
 			}
 		}

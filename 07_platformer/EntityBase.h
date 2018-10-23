@@ -1,14 +1,14 @@
 #pragma once
+#include <string>
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "Map.h"
 
 enum class EntityType { Base, Enemy, Player };
 
-enum class EntityState
-{
-	Idle, Walking, Jumping, Attacking, Hurt, Dying
-};
+enum class EntityState { Idle, Walking, Jumping, Attacking, Hurt, Dying };
 
+struct TileInfo;
 
 struct CollisionElement
 {
@@ -24,7 +24,8 @@ struct CollisionElement
 	sf::FloatRect m_tileBounds;
 };
 
-bool SortCollisions(const CollisionElement* a, const CollisionElement& b);
+using Collisions = std::vector<CollisionElement>;
+bool SortCollisions(const CollisionElement& l_1, const CollisionElement& l_2);
 
 class EntityManager;
 class EntityBase

@@ -1,5 +1,6 @@
 #include "State_Intro.h"
 #include "Common/StateManager.h"
+#include "Common/Window.h"
 
 State_Intro::State_Intro(StateManager* stateManager)
 	: BaseState(stateManager)

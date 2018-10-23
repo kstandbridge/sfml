@@ -1,8 +1,11 @@
 #include "EntityBase.h"
+#include "EntityManager.h"
+#include "SharedContext.h"
+#include "Map.h"
 
-bool SortCollisions(const CollisionElement* a, const CollisionElement& b)
+bool SortCollisions(const CollisionElement& l_1, const CollisionElement& l_2)
 {
-	return a->m_area > b.m_area;
+	return l_1.m_area > l_2.m_area;
 }
 
 EntityBase::EntityBase(EntityManager* entityManager)
@@ -15,6 +18,35 @@ EntityBase::EntityBase(EntityManager* entityManager)
 	  m_collidingOnX(false),
 	  m_collidingOnY(false)
 {
+}
+
+EntityBase::~EntityBase()
+{
+}
+
+const sf::Vector2f& EntityBase::GetPosition() const
+{
+	return m_position;
+}
+
+const sf::Vector2f& EntityBase::GetSize() const
+{
+	return m_size;
+}
+
+EntityState EntityBase::GetState() const
+{
+	return m_state;
+}
+
+std::string EntityBase::GetName() const
+{
+	return m_name;
+}
+
+unsigned EntityBase::GetId() const
+{
+	return m_id;
 }
 
 EntityType EntityBase::GetType() const
@@ -106,6 +138,11 @@ void EntityBase::Accelerate(float x, float y)
 	m_acceleration += sf::Vector2f(x, y);
 }
 
+void EntityBase::SetAcceleration(float x, float y)
+{
+	m_acceleration = sf::Vector2f(x, y);
+}
+
 void EntityBase::ApplyFriction(float x, float y)
 {
 	if(m_velocity.x != 0)
@@ -160,7 +197,7 @@ void EntityBase::Update(float deltaTime)
 		frictionValue = m_referenceTile->m_friction;
 		if(m_referenceTile->m_deadly)
 		{
-			SetState(EntityState::Dying)
+			SetState(EntityState::Dying);
 		}
 		else if(map->GetDefaultTile())
 		{
@@ -194,7 +231,7 @@ void EntityBase::UpdateAABB()
 
 void EntityBase::CheckCollisions()
 {
-	Map* gameMap = m_entityManager->GetContext()->m_gameMAp;
+	Map* gameMap = m_entityManager->GetContext()->m_gameMap;
 	unsigned int tileSize = gameMap->GetTileSize();
 	int fromX = floor(m_AABB.left / tileSize);
 	int toX = floor((m_AABB.left + m_AABB.width) / tileSize);

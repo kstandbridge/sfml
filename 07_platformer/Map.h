@@ -1,7 +1,13 @@
 #pragma once
-#include "Common/SharedContext.h"
-#include "Common/TextureManager.h"
-#include "Common/BaseState.h"
+#include <SFML/Graphics.hpp>
+#include <unordered_map>
+#include <map>
+#include <array>
+#include <fstream>
+#include <sstream>
+#include "Utilities.h"
+#include "SharedContext.h"
+#include "BaseState.h"
 
 enum Sheet { Tile_Size = 32, Sheet_Width = 256, Sheet_Height = 256 };
 

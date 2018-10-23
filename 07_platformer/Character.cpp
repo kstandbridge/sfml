@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "EntityManager.h"
+#include "StateManager.h"
 
 Character::Character(EntityManager* entityManager)
 	: EntityBase(entityManager),
@@ -8,6 +9,10 @@ Character::Character(EntityManager* entityManager)
 	  m_hitPoints(5)
 {
 	m_name = "Character";
+}
+
+Character::~Character()
+{
 }
 
 void Character::Move(const Direction& direction)
@@ -71,8 +76,7 @@ void Character::GetHurt(const int damage)
 void Character::Load(const std::string& path)
 {
 	std::ifstream file;
-	// file.open(Utils::GetWorkingDirectory() + std::string("media/Characters/" + path));
-	file.open(std::string("media/Characters/" + path));
+	file.open(Utils::GetWorkingDirectory() + std::string("media/Characters/" + path));
 	if(!file.is_open())
 	{
 		std::cout << "! Failed loading the character file: " << path << std::endl;
@@ -95,7 +99,7 @@ void Character::Load(const std::string& path)
 			keyStream >> path;
 			m_spriteSheet.LoadSheet("media/SpriteSheets/" + path);
 		}
-		else if(type == "HitPoints")
+		else if(type == "Hitpoints")
 		{
 			keyStream >> m_hitPoints;
 		}

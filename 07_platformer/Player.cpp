@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "EntityManager.h"
-#include "Common/StateManager.h"
+#include "StateManager.h"
 
 Player::Player(EntityManager* entityManager)
 	: Character(entityManager)
@@ -21,24 +21,24 @@ Player::~Player()
 	eventManager->RemoveCallback(StateType::Game, "Player_MoveLeft");
 	eventManager->RemoveCallback(StateType::Game, "Player_MoveRights");
 	eventManager->RemoveCallback(StateType::Game, "Player_MoveJump");
-	eventManager->RemoveCallback(StateType::Game, "Player_Attack"); 
+	eventManager->RemoveCallback(StateType::Game, "Player_Attack");
 }
 
 void Player::OnEntityCollision(EntityBase* collider, bool attack)
 {
-	if(m_state == EntityState::Dying) return;
-	if(attack)
+	if (m_state == EntityState::Dying) return;
+	if (attack)
 	{
-		if(m_state != EntityState::Attacking) return;
-		if(!m_spriteSheet.GetCurrentAnim()->IsInAction()) return;
-		if(collider->GetType() != EntityType::Enemy &&
+		if (m_state != EntityState::Attacking) return;
+		if (!m_spriteSheet.GetCurrentAnim()->IsInAction()) return;
+		if (collider->GetType() != EntityType::Enemy &&
 			collider->GetType() != EntityType::Player)
 		{
 			return;
 		}
 		Character* opponent = (Character*)collider;
 		opponent->GetHurt(1);
-		if(m_position.x > opponent->GetPosition().x)
+		if (m_position.x > opponent->GetPosition().x)
 		{
 			opponent->AddVelocity(-32, 0);
 		}
@@ -50,5 +50,25 @@ void Player::OnEntityCollision(EntityBase* collider, bool attack)
 	else
 	{
 		// Other behavior
+	}
+}
+
+void Player::React(EventDetails* details)
+{
+	if (details->m_name == "Player_MoveLeft") 
+	{
+		Character::Move(Direction::Left);
+	}
+	else if (details->m_name == "Player_MoveRight")
+	{
+		Character::Move(Direction::Right);
+	}
+	else if (details->m_name == "Player_Jump")
+	{
+		Character::Jump();
+	}
+	else if (details->m_name == "Player_Attack") 
+	{
+		Character::Attack();
 	}
 }

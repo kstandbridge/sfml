@@ -1,5 +1,6 @@
 #include "State_Paused.h"
 #include "Common/StateManager.h"
+#include "Common/Window.h"
 
 State_Paused::State_Paused(StateManager* stateManager)
 	: BaseState(stateManager)

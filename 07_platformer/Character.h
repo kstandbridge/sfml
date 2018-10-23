@@ -1,6 +1,6 @@
 #pragma once
 #include "EntityBase.h"
-#include "Common/SpriteSheet.h"
+#include "SpriteSheet.h"
 
 class Character : public EntityBase
 {

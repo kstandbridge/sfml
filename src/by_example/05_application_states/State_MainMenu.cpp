@@ -1,5 +1,6 @@
 #include "State_MainMenu.h"
 #include "Common/StateManager.h"
+#include "Common/Window.h"
 
 State_MainMenu::State_MainMenu(StateManager* stateManager)
 	: BaseState(stateManager)

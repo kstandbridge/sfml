@@ -1,8 +1,9 @@
 #pragma once
-#include "Common/Window.h"
-#include "Common/EventManager.h"
-#include "Common/StateManager.h"
-#include "Common/SharedContext.h"
+#include "Window.h"
+#include "EventManager.h"
+#include "StateManager.h"
+#include "TextureManager.h"
+#include "EntityManager.h"
 #include <iostream>
 
 class Game
@@ -15,18 +16,21 @@ public:
 	void Render();
 	void LateUpdate();
 
-	sf::Time GetElapsed() { return m_elapsed; }
+	sf::Time GetElapsed();
 
-	Window* GetWindow() { return &m_window; }
+	Window* GetWindow();
 
 private:
-	SharedContext m_context;
-	Window m_window;
-	StateManager m_stateManager;
+	void RestartClock();
 
 	sf::Clock m_clock;
 	sf::Time m_elapsed;
+	SharedContext m_context;
+	Window m_window;
+	EntityManager m_entityManager;
+	TextureManager m_textureManager;
+	StateManager m_stateManager;
 
-	void RestartClock() { m_elapsed = m_clock.restart(); }
+
 };
 

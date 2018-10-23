@@ -1,25 +1,25 @@
 #pragma once
-#include "Common/BaseState.h"
-#include "Common/EventManager.h"
+#include "BaseState.h"
+#include "EventManager.h"
 
-class State_Intro : public BaseState
+class State_Intro : public BaseState 
 {
 public:
-	State_Intro(StateManager* stateManager);
-	~State_Intro() {}
+	State_Intro(StateManager* l_stateManager);
+	~State_Intro();
 
+	void OnCreate();
+	void OnDestroy();
 
-	void OnCreate() override;
-	void OnDestroy() override;
-	void Activate() override {}
-	void Deactivate() override {}
-	void Update(const sf::Time time) override {}
-	void Draw() override;
+	void Activate();
+	void Deactivate();
 
-	void Exit(EventDetails* eventDetails);
+	void Update(const sf::Time& l_time);
+	void Draw();
 
+	void Continue(EventDetails* l_details);
 private:
-	sf::Texture m_introTexture;
 	sf::Sprite m_introSprite;
+	sf::Font m_font;
+	sf::Text m_text;
 };
-

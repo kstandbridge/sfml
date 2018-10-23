@@ -1,6 +1,6 @@
 #pragma once
 #include "Character.h"
-#include "Common/EventManager.h"
+#include "EventManager.h"
 
 class Player : public Character
 {

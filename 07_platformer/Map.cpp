@@ -1,6 +1,5 @@
 #include "Map.h"
-#include "Common/StateManager.h"
-#include "Common/Window.h"
+#include "StateManager.h"
 
 Map::Map(SharedContext* context, BaseState* currentState)
 	: m_context(context), 
@@ -28,11 +27,35 @@ Tile* Map::GetTile(unsigned x, unsigned y)
 	return (it != m_tileMap.end() ? it->second : nullptr);
 }
 
+TileInfo* Map::GetDefaultTile()
+{
+	return &m_defaultTile;
+}
+
+float Map::GetGravity() const
+{
+	return m_mapGravity;
+}
+
+unsigned Map::GetTileSize() const
+{
+	return Sheet::Tile_Size;
+}
+
+const sf::Vector2u& Map::GetMapSize() const
+{
+	return m_maxMapSize;
+}
+
+const sf::Vector2f& Map::GetPlayerStart() const
+{
+	return m_playerStart;
+}
+
 void Map::LoadMap(const std::string& path)
 {
 	std::ifstream mapFile;
-	// mapFile.open(Utils::GetWorkingDirectory() + path);
-	mapFile.open(path);
+	mapFile.open(Utils::GetWorkingDirectory() + path);
 	if(!mapFile.is_open())
 	{
 		std::cout << "! Failed loading map file: " << path << std::endl;
@@ -121,7 +144,34 @@ void Map::LoadMap(const std::string& path)
 		{
 			keyStream >> m_nextMap;
 		}
+		else if(type == "PLAYER")
+		{
+			if(playerId != -1) continue;
+			// Set up the player position here.
+			playerId = entity->Add(EntityType::Player);
+			if(playerId < 0) continue;
+			float playerX = 0; float playerY = 0;
+			keyStream >> playerX >> playerY;
+			entity->Find(playerId)->SetPosition(playerX, playerY);
+			m_playerStart = sf::Vector2f(playerX, playerY);
+		}
+		else if(type == "ENEMY")
+		{
+			std::string enemyName;
+			keyStream >> enemyName;
+			int enemyId = entity->Add(EntityType::Enemy, enemyName);
+			if(enemyId < 0) continue;
+			float enemyX; float enemyY = 0;
+			keyStream >> enemyX >> enemyY;
+			entity->Find(enemyId)->SetPosition(enemyX, enemyY);
+		}
+		else
+		{
+			std::cout << "! Unknown type '" << type << "'" << std::endl;
+		}
 	}
+	mapFile.close();
+	std::cout << "--- Map Loaded! ---" << std::endl;
 }
 
 void Map::LoadNext()
@@ -186,8 +236,7 @@ unsigned Map::ConvertCoords(unsigned x, unsigned y)
 void Map::LoadTiles(const std::string& path)
 {
 	std::ifstream file;
-	// file.open(Utils::GetWorkingDirectory() + path)
-	file.open(path);
+	file.open(Utils::GetWorkingDirectory() + path);
 	if(!file.is_open())
 	{
 		std::cout << "! Failed loading tile set file: " << path << std::endl;

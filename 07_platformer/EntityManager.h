@@ -1,11 +1,14 @@
 #pragma once
 #include <unordered_map>
-#include "EntityBase.h"
 #include <functional>
+#include "Player.h"
+#include "Enemy.h"
 
 using EntityContainer = std::unordered_map<unsigned int, EntityBase*>;
 using EntityFactory = std::unordered_map<EntityType, std::function<EntityBase*(void)>>;
 using EnemyTypes = std::unordered_map<std::string, std::string>;
+
+struct SharedContext;
 
 class EntityManager
 {
