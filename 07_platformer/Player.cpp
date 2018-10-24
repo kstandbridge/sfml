@@ -11,7 +11,7 @@ Player::Player(EntityManager* entityManager)
 	EventManager* eventManager = m_entityManager->GetContext()->m_eventManager;
 	eventManager->AddCallback<Player>(StateType::Game, "Player_MoveLeft", &Player::React, this);
 	eventManager->AddCallback<Player>(StateType::Game, "Player_MoveRight", &Player::React, this);
-	eventManager->AddCallback<Player>(StateType::Game, "Player_MoveJump", &Player::React, this);
+	eventManager->AddCallback<Player>(StateType::Game, "Player_Jump", &Player::React, this);
 	eventManager->AddCallback<Player>(StateType::Game, "Player_Attack", &Player::React, this);
 }
 

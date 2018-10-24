@@ -225,6 +225,22 @@ void Map::Draw()
 			sprite.setPosition(x * Sheet::Tile_Size, y * Sheet::Tile_Size);
 			window->draw(sprite);
 			++count;
+
+			// Debug.
+			if(m_context->m_debugOverlay.Debug()){
+				if(tile->m_properties->m_deadly || tile->m_warp){
+					sf::RectangleShape* tileMarker = new sf::RectangleShape(
+						sf::Vector2f(Sheet::Tile_Size,Sheet::Tile_Size));
+					tileMarker->setPosition(x * Sheet::Tile_Size, y * Sheet::Tile_Size);
+					if(tile->m_properties->m_deadly){
+						tileMarker->setFillColor(sf::Color(255,0,0,100));
+					} else if(tile->m_warp){
+						tileMarker->setFillColor(sf::Color(0,255,0,150));
+					}
+					m_context->m_debugOverlay.Add(tileMarker);
+				}
+			}
+			// End debug.
 		}
 }
 

@@ -28,7 +28,7 @@ int EntityManager::Add(const EntityType& type, const std::string& name)
 	if(type == EntityType::Enemy)
 	{
 		auto typeIt = m_enemyTypes.find(name);
-		if(typeIt != m_enemyTypes.find(name))
+		if(typeIt != m_enemyTypes.end())
 		{
 			Enemy* enemy = (Enemy*)entity;
 			enemy->Load(typeIt->second);

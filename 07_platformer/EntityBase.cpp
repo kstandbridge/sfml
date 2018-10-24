@@ -268,6 +268,17 @@ void EntityBase::ResolveCollisions()
 		for (auto& it : m_collisions)
 		{
 			if(!m_AABB.intersects(it.m_tileBounds)) continue;
+
+			// Debug
+			if(m_entityManager->GetContext()->m_debugOverlay.Debug()){
+				sf::Vector2f tempPos(it.m_tileBounds.left, it.m_tileBounds.top);
+				sf::RectangleShape* rect = new sf::RectangleShape(sf::Vector2f(tileSize,tileSize));
+				rect->setPosition(tempPos);
+				rect->setFillColor(sf::Color(255,255,0,150));
+				m_entityManager->GetContext()->m_debugOverlay.Add(rect);
+			}
+			// End debug.
+
 			float xDiff = (m_AABB.left + (m_AABB.width / 2)) -(it.m_tileBounds.left + (it.m_tileBounds.width / 2));
 			float yDiff = (m_AABB.top + (m_AABB.height / 2)) -(it.m_tileBounds.top + (it.m_tileBounds.height / 2));
 			float resolve = 0;

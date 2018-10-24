@@ -178,6 +178,30 @@
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keys.cfg" />
+    <None Include="Resources\media\Characters\EnemyList.list" />
+    <None Include="Resources\media\Characters\Player.char" />
+    <None Include="Resources\media\Characters\Rat.char" />
+    <None Include="Resources\media\Maps\map1.map" />
+    <None Include="Resources\media\Maps\map2.map" />
+    <None Include="Resources\media\Spritesheets\Player.sheet" />
+    <None Include="Resources\media\Spritesheets\Rat.sheet" />
+    <None Include="Resources\textures.cfg" />
+    <None Include="Resources\tiles.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\media\Textures\bg1.png" />
+    <Image Include="Resources\media\Textures\bg2.png" />
+    <Image Include="Resources\media\Textures\bg3.png" />
+    <Image Include="Resources\media\Textures\intro.png" />
+    <Image Include="Resources\media\Textures\PlayerSheet.png" />
+    <Image Include="Resources\media\Textures\RatSheet.png" />
+    <Image Include="Resources\media\Textures\tilesheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\media\Fonts\arial.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

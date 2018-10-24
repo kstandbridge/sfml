@@ -139,6 +139,16 @@ void Character::Update(float deltaTime)
 	if(m_attackAABB.width != 0 && m_attackAABB.height != 0)
 	{
 		UpdateAttackAABB();
+
+		if(m_entityManager->GetContext()->m_debugOverlay.Debug()){
+			sf::RectangleShape* arect = new sf::RectangleShape(sf::Vector2f(m_attackAABB.width,m_attackAABB.height));
+			arect->setPosition(m_attackAABB.left,m_attackAABB.top);
+			arect->setFillColor(sf::Color(255,0,0,
+				(m_state == EntityState::Attacking && m_spriteSheet.GetCurrentAnim()->IsInAction() 
+				? 200 : 100)));
+			m_entityManager->GetContext()->m_debugOverlay.Add(arect);
+		}
+
 	}
 	if(GetState() != EntityState::Dying && GetState() != EntityState::Attacking && GetState() != EntityState::Hurt)
 	{
