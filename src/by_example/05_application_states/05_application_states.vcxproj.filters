@@ -54,4 +54,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="intro.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Mushroom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

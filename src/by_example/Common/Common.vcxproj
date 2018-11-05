@@ -167,6 +167,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="StateManager.h" />
     <ClInclude Include="Textbox.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Utilities.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="Anim_Directional.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Textbox.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

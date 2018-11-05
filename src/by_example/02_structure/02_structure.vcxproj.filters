@@ -30,4 +30,9 @@
   <ItemGroup>
     <None Include="keys.cfg" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Mushroom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

@@ -42,4 +42,7 @@
   <ItemGroup>
     <None Include="keys.cfg" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf" />
+  </ItemGroup>
 </Project>

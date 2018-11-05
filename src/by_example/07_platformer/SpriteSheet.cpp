@@ -38,7 +38,7 @@ void SpriteSheet::SetDirection(const Direction& dir)
 {
 	if(dir == m_direction) return;
 	m_direction = dir;
-	m_animationCurrent->CropSprite();
+ 	m_animationCurrent->CropSprite();
 }
 
 Direction SpriteSheet::GetDirection() const
