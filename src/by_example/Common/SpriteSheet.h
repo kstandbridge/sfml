@@ -17,9 +17,9 @@ public:
 	~SpriteSheet() { ReleaseSheet(); }
 
 	void CropSprite(const sf::IntRect& rect);
-	sf::Vector2i GetSpriteSize() const;
+	sf::Vector2u GetSpriteSize() const;
 	sf::Vector2f GetSpritePosition() const;
-	void SetSpriteSize(const sf::Vector2i& size);
+	void SetSpriteSize(const sf::Vector2u& size);
 	void SetSpritePosition(const sf::Vector2f& pos);
 
 	void SetDirection(const Direction& dir);
@@ -37,7 +37,7 @@ public:
 private:
 	std::string m_texture;
 	sf::Sprite m_sprite;
-	sf::Vector2i m_spriteSize;
+	sf::Vector2u m_spriteSize;
 	sf::Vector2f m_spriteScale;
 	Direction m_direction;
 

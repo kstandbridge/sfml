@@ -162,12 +162,29 @@
     <ClInclude Include="Anim_Base.h" />
     <ClInclude Include="Anim_Directional.h" />
     <ClInclude Include="BaseState.h" />
+    <ClInclude Include="Bitmask.h" />
+    <ClInclude Include="Communicator.h" />
+    <ClInclude Include="C_Base.h" />
+    <ClInclude Include="C_Drawable.h" />
+    <ClInclude Include="C_Position.h" />
+    <ClInclude Include="C_SpriteSheet.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="ECS_Types.h" />
+    <ClInclude Include="EntityEvent.h" />
+    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="EntityMessage.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="EventQueue.h" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="MessageHandler.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="S_Base.h" />
+    <ClInclude Include="S_Renderer.h" />
     <ClInclude Include="Textbox.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Utilities.h" />
@@ -176,9 +193,13 @@
   <ItemGroup>
     <ClCompile Include="Anim_Base.cpp" />
     <ClCompile Include="Anim_Directional.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="S_Base.cpp" />
+    <ClCompile Include="S_Renderer.cpp" />
     <ClCompile Include="Textbox.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

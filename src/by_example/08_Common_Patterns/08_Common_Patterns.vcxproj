@@ -76,7 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\by_example;$(SolutionDir)deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)deps\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -84,7 +89,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\by_example;$(SolutionDir)deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)deps\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,10 +104,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\by_example;$(SolutionDir)deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)deps\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -108,14 +121,93 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\by_example;$(SolutionDir)deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)deps\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Assets\keys.cfg" />
+    <None Include="Assets\media\Entities\Player.entity" />
+    <None Include="Assets\media\Entities\Skeleton.entity" />
+    <None Include="Assets\media\Maps\map1 - Copy.map" />
+    <None Include="Assets\media\Maps\map1.map" />
+    <None Include="Assets\media\Spritesheets\Player.sheet" />
+    <None Include="Assets\media\Spritesheets\Skeleton.sheet" />
+    <None Include="Assets\textures.cfg" />
+    <None Include="Assets\tiles.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\media\Fonts\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\media\Textures\intro.png" />
+    <Image Include="Assets\media\Textures\PlayerSheet.png" />
+    <Image Include="Assets\media\Textures\SkeletonSheet.png" />
+    <Image Include="Assets\media\Textures\tilesheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Anim_Base.cpp" />
+    <ClCompile Include="Anim_Directional.cpp" />
+    <ClCompile Include="Entity_Manager.cpp" />
+    <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="State_Game.cpp" />
+    <ClCompile Include="State_GameOver.cpp" />
+    <ClCompile Include="State_Intro.cpp" />
+    <ClCompile Include="State_MainMenu.cpp" />
+    <ClCompile Include="State_Paused.cpp" />
+    <ClCompile Include="System_Manager.cpp" />
+    <ClCompile Include="S_Base.cpp" />
+    <ClCompile Include="S_Renderer.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Anim_Base.h" />
+    <ClInclude Include="Anim_Directional.h" />
+    <ClInclude Include="BaseState.h" />
+    <ClInclude Include="Bitmask.h" />
+    <ClInclude Include="Communicator.h" />
+    <ClInclude Include="C_Base.h" />
+    <ClInclude Include="C_Drawable.h" />
+    <ClInclude Include="C_Position.h" />
+    <ClInclude Include="C_SpriteSheet.h" />
+    <ClInclude Include="DebugOverlay.h" />
+    <ClInclude Include="Directions.h" />
+    <ClInclude Include="ECS_Types.h" />
+    <ClInclude Include="EntityEvents.h" />
+    <ClInclude Include="EntityMessages.h" />
+    <ClInclude Include="Entity_Manager.h" />
+    <ClInclude Include="EventManager.h" />
+    <ClInclude Include="Event_Queue.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="MessageHandler.h" />
+    <ClInclude Include="Observer.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SharedContext.h" />
+    <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="State_Game.h" />
+    <ClInclude Include="State_GameOver.h" />
+    <ClInclude Include="State_Intro.h" />
+    <ClInclude Include="State_MainMenu.h" />
+    <ClInclude Include="State_Paused.h" />
+    <ClInclude Include="System_Manager.h" />
+    <ClInclude Include="S_Base.h" />
+    <ClInclude Include="S_Renderer.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

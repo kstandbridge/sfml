@@ -13,7 +13,7 @@ void SpriteSheet::CropSprite(const sf::IntRect& rect)
 	m_sprite.setTextureRect(rect);
 }
 
-sf::Vector2i SpriteSheet::GetSpriteSize() const
+sf::Vector2u SpriteSheet::GetSpriteSize() const
 {
 	return m_spriteSize;
 }
@@ -23,7 +23,7 @@ sf::Vector2f SpriteSheet::GetSpritePosition() const
 	return m_sprite.getPosition();
 }
 
-void SpriteSheet::SetSpriteSize(const sf::Vector2i& size)
+void SpriteSheet::SetSpriteSize(const sf::Vector2u& size)
 {
 	m_spriteSize = size;
 	m_sprite.setOrigin(m_spriteSize.x / 2.0f, m_spriteSize.y);

@@ -35,8 +35,9 @@ public:
 	void Remove(const StateType& type) { m_toRemove.push_back(type); }
 
 	template<class T>
-	void RegisterState(const StateType& l_type){
-		m_stateFactory[l_type] = [this]() -> BaseState*
+	void RegisterState(const StateType& type)
+	{
+		m_stateFactory[type] = [this]() -> BaseState*
 		{
 			return new T(this);
 		};

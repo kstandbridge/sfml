@@ -5,7 +5,7 @@
 class TextureManager : public ResourceManager<TextureManager, sf::Texture>
 {
 public:
-	TextureManager() : ResourceManager("textures.cfg")
+	TextureManager() : ResourceManager("Assets/textures.cfg")
 	{
 	}
 
