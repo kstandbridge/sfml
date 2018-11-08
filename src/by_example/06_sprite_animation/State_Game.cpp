@@ -53,7 +53,7 @@ void State_Game::OnDestroy()
 	m_spriteSheet.ReleaseSheet();
 }
 
-void State_Game::Update(const sf::Time time)
+void State_Game::Update(const sf::Time& time)
 {
 	
 	m_spriteSheet.Update(time.asSeconds());

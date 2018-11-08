@@ -28,11 +28,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="keys.cfg" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Mushroom.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\keys.cfg" />
   </ItemGroup>
 </Project>

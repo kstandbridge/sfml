@@ -15,7 +15,7 @@ public:
 	virtual void OnDestroy() override;
 	virtual void Activate() override {}
 	virtual void Deactivate() override {}
-	virtual void Update(const sf::Time time) override;
+	virtual void Update(const sf::Time& time) override;
 	virtual void Draw() override;
 
 	void Continue(EventDetails* details);

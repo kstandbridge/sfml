@@ -139,7 +139,7 @@
     <ClCompile Include="State_Paused.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="keys.cfg" />
+    <None Include="Assets\keys.cfg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />

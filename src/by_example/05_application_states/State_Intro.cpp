@@ -39,7 +39,7 @@ void State_Intro::OnDestroy()
 	eventManager->RemoveCallback(StateType::Intro, "Into_Continue");
 }
 
-void State_Intro::Update(const sf::Time time)
+void State_Intro::Update(const sf::Time& time)
 {
 	if(m_timePassed < 5.0f) // Less than five seconds
 	{

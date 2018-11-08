@@ -142,7 +142,7 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="keys.cfg" />
+    <None Include="Assets\keys.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />

@@ -27,7 +27,7 @@ void State_Game::OnDestroy()
 	eventManager->RemoveCallback(StateType::Game, "Key_P");
 }
 
-void State_Game::Update(const sf::Time time)
+void State_Game::Update(const sf::Time& time)
 {
 	sf::Vector2u windowSize = m_stateManager->GetContext()->m_window->GetWindowSize();
 	sf::Vector2u textSize = m_texture.getSize();

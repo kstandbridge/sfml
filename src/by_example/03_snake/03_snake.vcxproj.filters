@@ -40,9 +40,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="keys.cfg" />
+    <Font Include="arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="arial.ttf" />
+    <None Include="Assets\keys.cfg" />
   </ItemGroup>
 </Project>
