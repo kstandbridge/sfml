@@ -6,22 +6,32 @@ Game* game = nullptr;
 
 int main(int argc, char* argv[])
 {
-	game = new Game();
+	const int FPS = 60;
+	const int frameDelay = 1000 / FPS;
 
-	game->init("BirchEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+	Uint32 frameStart;
+	int frameTime;
+
+	game = new Game();
+	game->init("GameWindow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
 	while (game->running())
 	{
-		// handle any user input
-		game->handleEvents();
-		// update all object eh, position, etc
-		game->update();
-		// render changes to the display
-		game->render();
+		frameStart = SDL_GetTicks(); // The number of tickets since execution
+
+		game->handleEvents();	// handle any user input
+		game->update();			// update all object eh, position, etc
+		game->render();			// render changes to the display
+
+		frameTime = SDL_GetTicks() - frameStart; // How long this iteration took
+
+		if(frameDelay > frameTime) // Do we need to delay the next iteration
+		{
+			SDL_Delay(frameDelay - frameTime); // Delay by the difference
+		}
 	}
 
 	game->clean();
-
 	delete game;
 
 	return 0;
