@@ -52,6 +52,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2D_GameEngine", "src\LetsMa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{496F8416-AB65-45F3-B83A-E72B8B19F9AF}"
 	ProjectSection(SolutionItems) = preProject
+		assets\1UP_mushroom.png = assets\1UP_mushroom.png
 		assets\mushroom.png = assets\mushroom.png
 	EndProjectSection
 EndProject
