@@ -50,6 +50,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LetsMakeGames", "LetsMakeGa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2D_GameEngine", "src\LetsMakeGames\2D_GameEngine\2D_GameEngine.vcxproj", "{9A2EF4CD-FD6A-453D-A50E-C8699B6D2E36}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{496F8416-AB65-45F3-B83A-E72B8B19F9AF}"
+	ProjectSection(SolutionItems) = preProject
+		assets\mushroom.png = assets\mushroom.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
