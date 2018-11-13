@@ -24,9 +24,6 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,16 +35,19 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECS.h">
+    <ClInclude Include="ECS\Components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
+    <ClInclude Include="ECS\ECS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\SpriteComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\PositionComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

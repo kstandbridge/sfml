@@ -54,8 +54,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{496F84
 	ProjectSection(SolutionItems) = preProject
 		assets\1UP_mushroom.png = assets\1UP_mushroom.png
 		assets\dirt.png = assets\dirt.png
+		assets\enemy.png = assets\enemy.png
 		assets\grass.png = assets\grass.png
 		assets\mushroom.png = assets\mushroom.png
+		assets\player.png = assets\player.png
 		assets\water.png = assets\water.png
 	EndProjectSection
 EndProject
