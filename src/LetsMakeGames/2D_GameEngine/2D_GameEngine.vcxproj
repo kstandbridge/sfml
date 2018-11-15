@@ -161,6 +161,7 @@
     <ClInclude Include="ECS\SpriteComponent.h" />
     <ClInclude Include="ECS\TransformComponent.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="ECS\TileComponent.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
