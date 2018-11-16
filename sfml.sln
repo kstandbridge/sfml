@@ -59,6 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{496F84
 		assets\mushroom.png = assets\mushroom.png
 		assets\p16x16.map = assets\p16x16.map
 		assets\player.png = assets\player.png
+		assets\player_anims.png = assets\player_anims.png
 		assets\player_idle.png = assets\player_idle.png
 		assets\water.png = assets\water.png
 	EndProjectSection
