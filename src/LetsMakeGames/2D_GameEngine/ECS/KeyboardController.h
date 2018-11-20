@@ -39,6 +39,7 @@ public:
 			case SDLK_a: transform->velocity.x = 0.0f; sprite->Play("Idle"); sprite->spriteFlip = SDL_FLIP_NONE; break;
 			case SDLK_s: transform->velocity.y = 0.0f; sprite->Play("Idle"); break;
 			case SDLK_d: transform->velocity.x = 0.0f; sprite->Play("Idle"); break;
+			case SDLK_ESCAPE: Game::isRunning = false; break;
 			default: break;
 			}
 		}
