@@ -1,10 +1,11 @@
 #pragma once
+
 #include "Components.h"
+#include <SDL2/SDL.h>
 #include "../TextureManager.h"
 #include "Animation.h"
-
-#include <SDL2/SDL.h>
 #include <map>
+#include "../AssetManager.h"
 
 class SpriteComponent : public Component
 {
@@ -25,12 +26,12 @@ public:
 	SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
 
 	SpriteComponent() = default;
-	SpriteComponent(const char* path)
+	SpriteComponent(std::string id)
 	{
-		setTex(path);
+		setTex(id);
 	}
 
-	SpriteComponent(const char* path, bool isAnimated)
+	SpriteComponent(std::string id, bool isAnimated)
 	{
 		animated = isAnimated;
 
@@ -42,17 +43,16 @@ public:
 
 		Play("Idle");
 
-		setTex(path);
+		setTex(id);
 	}
 
 	~SpriteComponent()
 	{
-		SDL_DestroyTexture(texture);
 	}
 
-	void setTex(const char* path)
+	void setTex(std::string id)
 	{
-		texture = TextureManager::LoadTexture(path);
+		texture = Game::assets->GetTexture(id);
 	}
 
 	void init() override

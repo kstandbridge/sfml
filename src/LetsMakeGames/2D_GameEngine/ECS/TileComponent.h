@@ -1,8 +1,9 @@
 #pragma once
 
 #include "ECS.h"
-
-#include <SDL2/SDL.h>
+#include "../Vector2D.h"
+#include "../Game.h"
+#include "../TextureManager.h"
 
 
 class TileComponent : public Component
@@ -17,12 +18,11 @@ public:
 	
 	~TileComponent()
 	{
-		SDL_DestroyTexture(texture);
 	}
 
-	TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, const char* path)
+	TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, std::string id)
 	{
-		texture = TextureManager::LoadTexture(path);
+		texture = Game::assets->GetTexture(id);
 		
 		position.x = xpos;
 		position.y = ypos;

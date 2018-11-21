@@ -1,9 +1,11 @@
 #pragma once
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 #include <vector>
+#include "ECS/ECS.h"
 
+class AssetManager;
 class ColliderComponent;
 
 class Game
@@ -25,11 +27,13 @@ public:
 	static SDL_Event event;
 	static bool isRunning;
 	static SDL_Rect camera;
+	static AssetManager* assets;
 	enum groupLabels : std::size_t
 	{
 		groupMap,
 		groupPlayers,
-		groupColliders
+		groupColliders,
+		groupProjectiles
 	};
 
 private:
