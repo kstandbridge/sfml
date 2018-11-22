@@ -4,6 +4,7 @@
 #include "Vector2D.h"
 #include "Collision.h"
 #include "AssetManager.h"
+#include <sstream>
 
 Map* map;
 Manager manager;
@@ -18,6 +19,7 @@ AssetManager* Game::assets = new AssetManager(&manager);
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
+auto& label(manager.addEntity());
 
 Game::Game()
 {
@@ -49,9 +51,16 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
+	if(TTF_Init() == -1)
+	{
+		std::cout << "Error : SDL_TTF" << std::endl;
+	}
+
 	assets->AddTexture("terrain", "assets/terrain_ss.png");
 	assets->AddTexture("player", "assets/player_anims.png");
 	assets->AddTexture("projectile", "assets/proj.png");
+
+	assets->AddFont("arial", "assets/arial.ttf", 16);
 
 	map = new Map("terrain", 3, 32);
 
@@ -64,6 +73,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers);
+
+	SDL_Color white = { 255, 255, 255, 255 };
+	label.addComponent<UILabel>(10, 10, "Test String", "arial", white);
 
 	assets->CreateProjectile(Vector2D(600, 600), Vector2D(2, 0), 200, 2, "projectile");
 	assets->CreateProjectile(Vector2D(600, 620), Vector2D(2, 0), 200, 2, "projectile");
@@ -96,6 +108,12 @@ void Game::update()
 
 	SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
 	Vector2D playerPos = player.getComponent<TransformComponent>().position;
+
+	std::stringstream ss;
+
+	ss << "Player position: " << playerPos;
+
+	label.getComponent<UILabel>().SetLabelText(ss.str(), "arial");
 
 	manager.refresh();
 	manager.update();
@@ -140,6 +158,8 @@ void Game::render()
 	for (auto& c : colliders) c->draw();
 	for (auto& p : players) p->draw();
 	for (auto& p : projectiles) p->draw();
+
+	label.draw();
 
 	SDL_RenderPresent(renderer);
 }
